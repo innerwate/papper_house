@@ -1,0 +1,87 @@
+// Fonts
+
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.reg_form,
+.login_form {
+    label {
+        width: 100%;
+    }
+}
+
+.wrap_reg,
+.wrap_login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+button.page-link {
+    display: inline-block;
+}
+
+button.page-link {
+    font-size: 20px;
+    color: #29b3ed;
+    font-weight: 500;
+}
+
+.offset {
+    width: 500px !important;
+    margin: 20px auto;
+}
+
+.ratings {
+    display: flex;
+    flex-direction: row;
+
+    span {
+        display: block
+    }
+
+    .highlight_svg,
+    .active_star svg {
+        fill: red;
+    }
+
+}
+
+.poems_list {
+    list-style: none;
+    padding-left: 0px;
+    padding-right: 10px;
+    display: flex;
+    flex-wrap: wrap;
+
+    .poem_item {
+        background-color: rgb(240, 242, 244);
+        margin-left: 10px;
+        margin-bottom: 10px;
+        padding: 10px;
+        min-height: 300px;
+        border-radius: 15px;
+        border: 2px solid black;
+
+    }
+
+    .poem_item:first-child {
+        margin-left: 0;
+    }
+}
+
+.logo_wrapp {
+    img {
+        width: 360px;
+    }
+}
+
+.main_content {
+    margin-top: 20px;
+}
