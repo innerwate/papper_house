@@ -5,67 +5,56 @@ namespace App\Http\Controllers;
 use App\Rating;
 use Illuminate\Http\Request;
 use DB;
+use App\Poem;
+use App\User;
 
 class RatingController extends Controller
 {
-    public function createRating(Request $request){
+    public function getCurrentRating(Request $request)
+    {
+        $rating = User::find($request->user_id)->poemRating()->where('poem_id', $request->poem_id)->first();
+        if ($rating) {
+            $rating = $rating->pivot->rating;
+            return response()->json($rating);
+        } else {
+            return false;
+        }
+    }
+
+    public function resetRating(Request $request)
+    {
         $user_id = $request->user_id;
         $poem_id = $request->poem_id;
-        $rating= $request->rating;
-        // $user_id = $rating->user_id;
-        // $poem_id = $rating->poem_id;
-        // $rating = $rating->rating;
-        $ratedPoem = DB::table('ratings')->where('userID', $user_id)->where('poemID', $poem_id)->get()->first();
-        if(isset($ratedPoem)){
-            $ratedPoem =  DB::table('ratings')
-            ->where('userID', $user_id)
-            ->where('poemID', $poem_id)
-            ->update(['rating' => $rating]);
-        }else{
-        DB::table('ratings')->insert(
-            array('userID' => $user_id, 'poemID' => $poem_id, 'rating' => $rating)
-         );
-        
+        $detach = User::find($user_id)->poemRating()->detach($poem_id);
+        if ($detach) {
+            return response()->json('success reset');
+        } else {
+            return response()->json('error');
         }
-        $data['user_id']=$user_id;
-        $data['poem_id'] = $poem_id;
-        $data['rating'] = $rating;
-        return response()->json($data);
     }
-    public function getCurrentRating($poem_id, $user_id){
-     
-      
-        $ratedPoem = DB::table('ratings')->where('userID', $user_id)->where('poemID', $poem_id)->get()->first();
-        
-        //  ->where('userID', $user_id)
-        //  ->where('poemID', $poem_id);
-         if(!empty($ratedPoem)){
-            $data['rating'] = $ratedPoem->rating;
-         }
-         else{
-             $data['rating'] = null;
-         }
-         return response()->json($data);
-    }
-    public function resetRating($poem_id, $user_id){
-        $poem =  DB::table('ratings')
-        ->where('userID', $user_id)
-        ->where('poemID', $poem_id)
-        ->update(['rating' => 0]);
 
-    }
-    public function getAvgRating($poem_id){
-        $rating_column =  DB::table('ratings')
-        ->select('rating')
-        ->where('poemID', $poem_id)
-        ->get();
-        $iteration = 0;
-        $total_rating = 0;
-        for($i=0;$i<count($rating_column);$i++){
-            $total_rating=$total_rating + $rating_column[$i]->rating;
-
+    public function getAvgRating(Request $request)
+    {
+        $poems = Poem::find($request->poem_id)->userRating;
+        //dd($poems);
+        if (isset($poems) && $poems->count() > 0) {
+            $avgRating = $poems->avg('pivot.rating');
+            return response()->json($avgRating);
+        } else {
+            return false;
         }
-        $avg_rating = round($total_rating/$i, 1);
-        return response()->json($avg_rating);
+    }
+
+    public function setRating(Request $request)
+    {
+        $user_id = $request->user_id;
+        $poem_id = $request->poem_id;
+        $rating = $request->rating;
+        $sync = User::find($user_id)->poemRating()->sync([$poem_id => ['rating' => $rating]], false);
+        if ($sync) {
+            return response()->json($rating);
+        } else {
+            return response()->json('error');
+        }
     }
 }

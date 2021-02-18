@@ -42,6 +42,9 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        'jwt.verify' => [
+            \App\Http\Middleware\JwtMiddleware::class
+        ],
     ];
 
     /**

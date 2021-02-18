@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/{any}', 'OfficeController@office')->where('any', '.*');
+Route::get('/getPoems', 'PoemController@getPoems')->name('all-poems');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home', 'HomeController@index')->name('home2');
 
@@ -29,3 +30,8 @@ Route::post('/home', 'HomeController@index')->name('home2');
 // Route::post('/submit', 'OfficeController@submit');
 
 
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
