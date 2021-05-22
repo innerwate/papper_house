@@ -9,9 +9,14 @@ use Illuminate\Support\Facades\Validator;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\Author;
+use App\Image;
+use App\Role;
+use App\Repository\ImageRepository;
 use Carbon\Carbon;
+
 class AuthController extends Controller
 {
+    private $imageRepository;
     /**
      * Create a new AuthController instance.
      *
@@ -54,19 +59,29 @@ class AuthController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
+            'avatar'    => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         if ($validator->fails()) {
             return response()->json($validator->errors()->toJson(), 400);
         }
-
-        $user = User::create([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'password' => Hash::make($request->get('password')),
-        ]);
         $creator = new Author;
+        $user = new User;
+        // $image = $request->avatar;
+        // $imgName = rand(11111, 99999).'.'.$image->getClientOriginalExtension();
+        if ($request->hasFile('avatar')) {
+            $image = $request->file('avatar');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(300, 300)->save(storage_path('/uploads/' . $filename));
+            $user->avatar = $filename;
+        };
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $role = Role::where('name', 'sub')->firstOrFail();
+        $user->role()->associate($role);
+        $user->password = Hash::make($request->get('password'));
         $user->creators()->save($creator);
+        $user->save();
         $token = JWTAuth::fromUser($user);
 
         return response()->json(compact('user', 'token'), 201);
