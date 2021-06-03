@@ -17,6 +17,15 @@ import JwPagination from 'jw-vue-pagination';
 import axios from "axios";
 import VueAxios from 'vue-axios'
 import store from "./store/store.js";
+import { MdButton, MdContent, MdTabs, MdProgress, MdIcon } from 'vue-material/dist/components'
+import 'vue-material/dist/vue-material.min.css'
+import 'vue-material/dist/theme/default.css'
+
+Vue.use(MdButton)
+Vue.use(MdContent)
+Vue.use(MdTabs)
+Vue.use(MdProgress)
+Vue.use(MdIcon)
 //import config from "./config";
 //import header from './components/header.vue';
 Vue.component('jw-pagination', JwPagination);
@@ -51,7 +60,7 @@ Vue.use(auth, {
         rolesKey: 'type',
         notFoundRedirect: { name: 'user-account' },
         registerData: { url: '/api/auth/signup', method: 'POST', redirect: '/sign-in' },
-        loginData: { url: '/api/auth/signin', method: 'POST' },
+        loginData: { url: '/api/auth/signin', method: 'POST', redirect: '/poems' },
         logoutData: { url: '/api/auth/logout', method: 'POST', redirect: '/sign-in'},
         fetchData: { url: '/api/auth/user', method: 'GET' },
     }

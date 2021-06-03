@@ -23,11 +23,16 @@ use App\Author;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\HistoryPerson whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\HistoryPerson whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Image $images
  */
 class HistoryPerson extends Model
 {
     public function creators()
     {
         return $this->morphMany(Author::class, 'creator');
+    }
+
+    public function image(){
+        return $this->belongsTo(Image::class);
     }
 }

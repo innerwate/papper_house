@@ -1,47 +1,77 @@
 <template>
   <div class="container">
-    <div class="header_wrap row">
-      <div class="logo_wrapp col-6">
-        <img :src="'/img/logo.png'" />
-      </div>
-      <div class="header_text col-6">
-        <h1>Paper House</h1>
-        <nav>
-          <md-button class="md-raised" v-if="this.$auth.check() == false"
-            ><router-link class="md-raised" :to="{ name: 'sign-up' }"
-              >Регистрация</router-link
-            ></md-button
-          >
-          <md-button class="md-raised" v-if="this.$auth.check() == false">
-            <router-link class="md-raised" :to="{ name: 'sign-in' }"
-              >Вход</router-link
-            ></md-button
-          >
-          <md-button
-            class="md-raised md-accent"
-            v-if="this.$auth.check() == true"
-            @click.prevent="logout"
-          >
-            Выйти
-          </md-button>
-          <md-button class="md-raised"
-            ><router-link className="md-raised" :to="{ name: 'poems' }"
-              >Стихотворения</router-link
-            ></md-button
-          >
-          <md-button class="md-raised" v-if="this.$auth.check() == true"
-            ><router-link class="md-raised" :to="{ name: 'create-poem' }"
-              >Добавить стихотворение</router-link
-            ></md-button
-          >
+    <div class="row">
+      <div class="header_wrap col-12">
+        <div class="row">
+          <div class="logo_wrapp col-4">
+            <img :src="'/img/logo.png'" />
+          </div>
+          <div class="header_text col-7 offset-1">
+            <nav class="d-flex flex-row">
+              <div class="poems_nav d-flex flex-column col-6">
+                <md-button class="md-raised"
+                  ><router-link className="md-raised" :to="{ name: 'poems' }"
+                    >Стихотворения</router-link
+                  ></md-button
+                >
+                <md-button class="md-raised" v-if="this.$auth.check() == true"
+                  ><router-link class="md-raised" :to="{ name: 'users-poems' }"
+                    >Стихотворения пользователей</router-link
+                  ></md-button
+                >
+                <md-button class="md-raised" v-if="this.$auth.check() == true"
+                  ><router-link :to="{ name: 'my-poems' }"
+                    >Мои стихотворения</router-link
+                  ></md-button
+                >
+                <md-button class="md-raised" v-if="this.$auth.check() == true"
+                  ><router-link class="md-raised" :to="{ name: 'create-poem' }"
+                    >Добавить стихотворение</router-link
+                  ></md-button
+                >
+              </div>
 
-          <!-- <router-link :to="{ name: 'recomendations1' }">Recomendations</router-link> -->
-        </nav>
-      </div>
-    </div>
+              <div class="duels_nav d-flex flex-column col-6" >
+                <md-button class="md-raised" v-if="this.$auth.check() == true"
+                  ><router-link :to="{ name: 'duels' }"
+                    >Список дуэлей</router-link
+                  ></md-button
+                >
+                <md-button class="md-raised" v-if="this.$auth.check() == true"
+                  ><router-link :to="{ name: 'create-duel' }"
+                    >Добавить дуэль</router-link
+                  ></md-button
+                >
+                <md-button
+                  class="md-raised ml-0"
+                  v-if="this.$auth.check() == false"
+                  ><router-link class="md-raised" :to="{ name: 'sign-up' }"
+                    >Регистрация</router-link
+                  ></md-button
+                >
+                <md-button class="md-raised" v-if="this.$auth.check() == false">
+                  <router-link class="md-raised" :to="{ name: 'sign-in' }"
+                    >Вход</router-link
+                  ></md-button
+                >
+                <md-button
+                  class="md-raised md-accent"
+                  v-if="this.$auth.check() == true"
+                  @click.prevent="logout"
+                >
+                  Выйти
+                </md-button>
+              </div>
 
-    <div class="main_content">
-      <router-view></router-view>
+              
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="main_content col-12">
+        <router-view></router-view>
+      </div>
     </div>
   </div>
 </template>
@@ -54,6 +84,11 @@ export default {
         url: "/api/auth/logout",
         redirect: { name: "signin" },
       });
+    },
+  },
+  computed: {
+    _user() {
+      return this.$auth.user() || {};
     },
   },
 };
@@ -74,10 +109,10 @@ export default {
   padding: 0 8px;
   color: black !important;
 }
-.router-link-active{
-  background-color: #7CEECE;
+.router-link-exact-active.router-link-active {
+  background-color: #7ceece;
 }
-.md-button .md-ripple{
-  padding: 0 0;
+.md-button .md-ripple {
+  padding: 0px 0px;
 }
 </style>

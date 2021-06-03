@@ -1,7 +1,7 @@
 <template>
   <div class="wrap_login">
-    <div class="login_form col-3">
-      <h1>Вход</h1>
+    <div class="login_form col-9">
+      <h1 class="signin_header">Вход</h1>
       <form @submit.prevent="login">
         <div class="form-group">
           <label for="email">Введите ваш email</label>
@@ -19,9 +19,6 @@
 
         <button class="btn btn-primary" id="log">Войти</button>
       </form>
-      <button @click.prevent="fetch" class="btn btn-primary" id="">
-        fetch
-      </button>
     </div>
   </div>
 </template>

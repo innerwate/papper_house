@@ -15,7 +15,8 @@ class HistoryPersonController extends Controller
      */
     public function index()
     {
-        //
+        $people = HistoryPerson::with('image')->orderBy('name', 'asc')->get();
+        return response()->json($people);
     }
 
     /**

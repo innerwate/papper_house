@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Author;
 use App\User;
 use App\Group;
+use App\Category;
+use App\Participant;
 /**
  * App\Poem
  *
@@ -31,6 +33,9 @@ use App\Group;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Poem whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Poem whereYearOfCreated($value)
  * @mixin \Eloquent
+ * @property int $category_id
+ * @property-read \App\Category $categories
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Poem whereCategoryId($value)
  */
 class Poem extends Model
 {
@@ -44,6 +49,7 @@ class Poem extends Model
         'title', 
         'content', 
         'author_id',
+        'category_id',
         'year_of_created'
     ];
      /**
@@ -53,10 +59,21 @@ class Poem extends Model
     {
         return $this->belongsTo(Author::class);
     }
+
+    public function categories()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
     public function group()
     {
         return $this->belongsTo(Group::class);
     }
+
+    public function participants()
+    {
+        return $this->hasMany(Participant::class);
+    }
+
     public function userRating()
     {
         return $this->belongsToMany(User::class, 'users_poems_rating')->withPivot('rating');

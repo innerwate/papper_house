@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\DuelController;
+use App\Http\Controllers\PoemController;
+use App\Poem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,7 +34,10 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/poems/{poem_id}/get_avg_rate','RatingController@getAvgRating')->name('get_avg_rating');
 Route::resources([
     'poems' => 'PoemController',
-    'authors' => 'AuthorController'
+    'authors' => 'AuthorController',
+    'categories' => 'CategoryController',
+    'duels' => 'DuelController',
+    'historyPeople' => 'HistoryPersonController'
 ]);
 Route::group([
 
@@ -46,6 +52,7 @@ Route::group([
     Route::post('refresh', 'AuthController@refresh');
     Route::get('user', 'AuthController@getAuthenticatedUser');
     Route::post('me', 'AuthController@me');
+    Route::get('users', 'AuthController@getUsers');
 });
 Route::group(['middleware' => ['jwt.verify']], function() {
     
@@ -57,5 +64,10 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 });
 
 Route::get('test', 'HistoryPersonController@historyPerson');
+Route::get('/getCategories', 'CategoryController@getCategories')->name('get-categories');
+Route::get('/poems/getByUser/{id}', 'PoemController@getPoemsByUser')->name('get-poems-by-user');
+Route::get('/duels/{id}/get-vote', 'DuelController@getUserVote')->name('get-user-vote');
+Route::post('/duels/{id}/set-vote', 'DuelController@setUserVote')->name('set-user-vote');
+Route::get('/poems/myPoems/{user_id}', 'PoemController@myPoems')->name('get-my-poems');
 
 

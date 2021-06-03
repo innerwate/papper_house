@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Poem;
 use App\HistoryPerson;
 use App\User;
+use App\Participant;
 /**
  * App\Author
  *
@@ -26,6 +27,7 @@ use App\User;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Author whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Author whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $creators
  */
 class Author extends Model
 {
@@ -35,14 +37,18 @@ class Author extends Model
     ];
     public $timestamps = true;
 
-    /**
-     * Get the comments for the blog post.
-     */
-    public function poem()
+    
+    public function poems()
     {
         return $this->hasMany(Poem::class);
     }
-    public function authors(){
-        return $this->morphTo();
+    
+    public function creators(){
+        return $this->morphTo('creator','creator_type', 'creator_id');
+    }
+
+    public function participants()
+    {
+        return $this->hasMany(Participant::class);
     }
 }

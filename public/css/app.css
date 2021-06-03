@@ -1,17 +1,12 @@
-@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css2?family=Pattaya&display=swap);@import url(https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;
 
-/*!
- * Bootstrap v4.5.0 (https://getbootstrap.com/)
- * Copyright 2011-2020 The Bootstrap Authors
- * Copyright 2011-2020 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
+400;500;600;700&display=swap);@import url(https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap);@import url(https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap);@charset "UTF-8";
 
 :root {
   --blue: #3490dc;
   --indigo: #6574cd;
   --purple: #9561e2;
-  --pink: #f66d9b;
+  --pink: #FDB7C5;
   --red: #e3342f;
   --orange: #f6993f;
   --yellow: #ffed4a;
@@ -533,7 +528,7 @@ mark,
 
 code {
   font-size: 87.5%;
-  color: #f66d9b;
+  color: #FDB7C5;
   word-wrap: break-word;
 }
 
@@ -10928,6 +10923,39 @@ a.text-dark:focus {
   }
 }
 
+.page-wrap {
+  background-color: #DAF9F2;
+  min-height: 100vh;
+}
+
+.load_avatar {
+  font-size: 20px;
+}
+
+.load_avatar span {
+  font-size: 14px;
+}
+
+.reg_form {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  padding: 30px 30px;
+  margin-top: 30px;
+}
+
+.reg_header {
+  text-align: center;
+}
+
+.login_form {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  padding: 30px 30px;
+  margin-top: 30px;
+}
+
+.signin_header {
+  text-align: center;
+}
+
 .reg_form label,
 .login_form label {
   width: 100%;
@@ -10967,36 +10995,624 @@ button.page-link {
 
 .ratings .highlight_svg,
 .ratings .active_star svg {
-  fill: red;
+  fill: #ff5252;
 }
 
-.poems_list {
+.avarage-rating {
+  font-family: "Comfortaa", cursive;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.avarage-rating strong {
+  font-size: 22px;
+}
+
+.current-rating {
+  font-family: "Comfortaa", cursive;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.current-rating strong {
+  font-size: 22px;
+}
+
+.no-rating-yet {
+  font-family: "Comfortaa", cursive;
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+.poem-show-buttons {
+  margin-top: 4px;
+}
+
+.poem-show-buttons .edit-button {
+  display: flex;
+  justify-content: center;
+}
+
+.poem-show-buttons .edit-button .edit-poem-btn {
+  width: 275px;
+  text-align: center;
+}
+
+.poem-show-buttons .edit-button .edit-poem-btn a {
+  text-align: center !important;
+  padding-right: 0px !important;
+  padding: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.poem-show-buttons .rating-buttons {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.poem-show-buttons .rating-buttons .reset-rating {
+  width: 275px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.container {
+  padding-top: 30px;
+}
+
+.poems {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  background-color: #cdeafb;
+}
+
+.poems .poems_list {
   list-style: none;
-  padding-left: 0px;
+  padding-left: 10px;
   padding-right: 10px;
+  padding-top: 15px;
+  padding-bottom: 30px;
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
+  min-height: 924px;
 }
 
-.poems_list .poem_item {
-  background-color: #f0f2f4;
-  margin-left: 10px;
-  margin-bottom: 10px;
-  padding: 10px;
+.poems .poems_list li .poem_item {
+  background-color: #DAF9F2;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   min-height: 300px;
-  border-radius: 15px;
-  border: 2px solid black;
+  overflow: hidden;
+  display: flex;
 }
 
-.poems_list .poem_item:first-child {
-  margin-left: 0;
+.poems .poems_list li .poem_item .poem_content {
+  margin-left: 20px;
+  margin-top: 20px;
+  width: 100%;
+  margin-bottom: 30px;
 }
 
-.logo_wrapp img {
-  width: 360px;
+.poems .poems_list li .poem_item .poem_content .poem_title a {
+  font-style: italic;
+  font-weight: 900;
+  color: black !important;
+  font-family: "Comfortaa", cursive;
+  font-size: 20px;
+}
+
+.poems .poems_list li .poem_item .poem_content .poem_author {
+  font-style: italic;
+  font-size: 12px;
+  font-weight: 300;
+  margin-top: 10px;
+  text-decoration: underline;
+}
+
+.poems .poems_list li .poem_item .poem_content .poem_text {
+  margin-top: 10px;
+  height: 300px;
+  overflow-y: auto;
+  /* width */
+}
+
+.poems .poems_list li .poem_item .poem_content .poem_text::-webkit-scrollbar {
+  width: 15px;
+  height: 10px;
+}
+
+.poems .poems_list li .poem_item .poem_content .poem_text pre {
+  white-space: pre-wrap;
+  word-break: keep-all;
+  font-family: "Old Standard TT", serif;
+  font-size: 16px;
+  font-style: italic;
+  color: black;
+}
+
+.poems .poems_list li:nth-child(2n) .poem_item {
+  background-color: white;
+}
+
+.logo_wrapp {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  padding: 0 0;
+}
+
+.header_text {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #cdeafb;
+}
+
+.header_text button:first-child {
+  margin-left: 0px !important;
 }
 
 .main_content {
+  margin-top: 30px;
+}
+
+.category_item button {
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.category_item .md-button .md-ripple {
+  padding-left: 5px;
+  padding-right: 5px;
+  color: black;
+}
+
+.category_item .md-button .md-ripple .md-button-content {
+  font-family: "Comfortaa", cursive;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.categories_list {
+  list-style: none;
+  margin: 0 0;
+  justify-content: space-between;
+}
+
+.categories {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: 15px;
+}
+
+.categories .category_item button {
+  background-color: white !important;
+}
+
+.categories .category_item button .md-button-content {
+  color: black !important;
+}
+
+.categories .category_item .active_category {
+  background-color: #7CEECE !important;
+}
+
+.categories .category_item .active_category .md-button-content {
+  color: black !important;
+}
+
+/* width */
+
+::-webkit-scrollbar {
+  width: 20px;
+  height: 20px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #01a0fd2e;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background-color: #01a0fd;
+  display: block;
+  width: 30px;
+  height: 30px;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #01a0fd;
+  display: block;
+  width: 30px;
+  height: 30px;
+}
+
+.pagination-wrap {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.pagination-wrap .pagination .page-item a {
+  background-color: #01a0fd !important;
+  color: white !important;
+  font-weight: 700 !important;
+}
+
+.pagination-wrap .pagination .page-item.page-number a {
+  background-color: #daf9f2 !important;
+  color: black !important;
+}
+
+.pagination-wrap .pagination .page-item.page-number.active a {
+  background-color: #7CEECE !important;
+  color: black !important;
+}
+
+/* Modal Content/Box */
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  /* Could be more or less, depending on screen size */
+}
+
+.modal {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.modal .modal-wrap {
+  width: 300px;
+  height: auto;
+  background-color: white;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 11;
+  background-color: #ffbc00;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.modal .modal-wrap .close-modal .close {
+  float: unset;
+  position: absolute;
+  font-size: 30px;
+  right: 5px;
+  top: 0;
+}
+
+.modal .modal-wrap .modal-content {
+  background-color: #ffffff;
+}
+
+.modal:before {
+  content: "";
+  display: block;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
+.duel_link {
+  width: 100%;
+  display: flex;
+  /* text-align: center; */
+  justify-content: center;
+  padding-top: 10px;
+  color: black !important;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.duels_list {
+  list-style: none;
+}
+
+.duel-li {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.duel_header {
+  margin-top: 20px;
+}
+
+.duel_header .duel_link {
+  font-family: "Comfortaa", cursive;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.duels_list li {
+  margin-top: 45px;
+  background-color: #cdeafb !important;
+}
+
+.duels_list li .duel_item {
+  margin-top: 10px;
+}
+
+.duels_list li .duel_item .winner-status {
+  margin-top: 15px;
+  font-size: 20px;
+  text-decoration: underline;
+  color: #468c24;
+  font-family: Comfortaa, sans-serif;
+}
+
+.duels_list li .duel_item .duel_started_at {
+  font-family: Comfortaa, sans-serif;
+  font-size: 18px;
+  color: black;
+}
+
+.duels_list li .duel_item .duel_deadline_date {
+  margin-top: 5px;
+  font-family: Comfortaa, sans-serif;
+  font-size: 18px;
+  color: black;
+}
+
+.duels_list li .duel_item .duel_desc {
+  margin-top: 15px;
+}
+
+.duels_list li .duel_item .duel_desc pre {
+  text-align: center;
+  font-family: "Comfortaa", cursive;
+  font-size: 18px;
+  font-weight: 500;
+  color: black;
+}
+
+/* .green{
+    color: green;
+  }
+  .grey{
+    color: #d1d1d1;
+  } */
+
+.duel_status {
+  padding-top: 10px;
+  text-align: end;
+}
+
+.duel_status_text {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.duel_status_text.active::before {
+  display: inline-block;
+  content: "";
+  border-radius: 0.375rem;
+  height: 0.75rem;
+  width: 0.75rem;
+  margin-right: 0.5rem;
+  background-color: green;
+  border: 1px solid black;
+}
+
+.duel_status_text.non-active::before {
+  display: inline-block;
+  content: "";
+  border-radius: 0.375rem;
+  height: 0.75rem;
+  width: 0.75rem;
+  margin-right: 0.5rem;
+  background-color: red;
+  border: 1px solid black;
+}
+
+.participant-item {
+  margin-top: 20px;
+}
+
+.participant-item:nth-child(2n+1) {
+  border-right: 1px solid black;
+}
+
+.participant-item .participant-avatar {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.participant-item .participant-avatar img {
+  max-width: 300px;
+}
+
+.participant-item .participant-name {
+  margin-top: 20px;
+  font-family: "Comfortaa", cursive;
+  font-size: 18px;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.participant-item .participant-poem {
+  margin-top: 10px;
+}
+
+.participant-item .participant-poem-title {
+  font-family: "Comfortaa", cursive;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.participant-item .participant-poem-content {
+  margin-top: 10px;
+}
+
+.participant-item .participant-poem-content pre {
+  white-space: pre-wrap;
+  word-break: keep-all;
+  font-family: "Old Standard TT", serif;
+  font-size: 20px;
+  font-style: italic;
+  text-align: center;
+  color: black;
+}
+
+.poem-show-item {
+  background-color: #cdeafb;
+  margin-bottom: 30px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  padding-bottom: 20px;
+}
+
+.poem-show-item .author-name {
+  margin-top: 20px;
+  font-family: "Comfortaa", cursive;
+  font-size: 18px;
+  font-style: italic;
+  text-decoration: underline;
+  text-align: center;
+}
+
+.poem-show-item .author-poem {
+  margin-top: 25px;
+}
+
+.poem-show-item .author-poem-title {
+  text-align: center;
+  font-family: "Comfortaa", cursive;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.poem-show-item .author-poem-content {
+  margin-top: 20px;
+}
+
+.poem-show-item .author-poem-content pre {
+  white-space: pre-wrap;
+  word-break: keep-all;
+  font-family: "Old Standard TT", serif;
+  font-size: 20px;
+  font-style: italic;
+  text-align: center;
+  color: black;
+}
+
+.vote_icon {
+  width: 25px;
+  margin-bottom: 7px;
+  margin-left: 5px;
+}
+
+.poems_nav .md-button-content a,
+.duels_nav .md-button-content a {
+  padding: 5px 5px !important;
+  font-size: 13px;
+  justify-content: center;
+}
+
+.duels_nav button:nth-child(3) {
+  margin-top: auto;
+}
+
+.vote-button-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.vote-button {
+  padding: 5px 5px !important;
+  background-color: #01a0fd !important;
+  color: white !important;
+}
+
+.edit-duel {
+  padding: 5px 5px !important;
+  background-color: #01a0fd !important;
+}
+
+.edit-duel .md-button-content a {
+  color: white !important;
+}
+
+.delete-duel {
+  padding: 5px 13px !important;
+}
+
+.buttons_status {
+  border-top: 1px solid black;
+  margin-bottom: 20px;
+  padding-top: 15px;
+  margin-top: 10px;
+}
+
+.poem-form .form-control {
+  background-color: white !important;
+  color: black;
+}
+
+.poem-form .form-check .form-check-input {
+  width: 20px;
+  height: 20px;
+}
+
+.poem-form .form-check .form-check-label {
+  margin-left: 10px;
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.poem-form .btn-form-create-update {
+  background-color: #01a0fd;
+  margin-bottom: 20px;
+  border-radius: 0;
+  border: 0;
+}
+
+.duel-form .form-control {
+  background-color: white !important;
+  color: black;
+}
+
+.duel-form select.form-control {
+  margin-top: 15px;
+}
+
+.duel-form .btn-form-create-update {
+  background-color: #01a0fd;
+  margin-bottom: 20px;
+  border-radius: 0;
+  border: 0;
+}
+
+.duel-create-wrap,
+.duel-edit-wrap,
+.poem-create-wrap,
+.poem-edit-wrap {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  margin-top: 20px;
+  background-color: #cdeafb;
+  margin-bottom: 30px;
+}
+
+.mt-20 {
   margin-top: 20px;
 }
 

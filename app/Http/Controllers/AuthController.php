@@ -59,29 +59,35 @@ class AuthController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
-            'avatar'    => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'avatar'    => 'required|file|image'
         ]);
-
         if ($validator->fails()) {
             return response()->json($validator->errors()->toJson(), 400);
         }
         $creator = new Author;
         $user = new User;
-        // $image = $request->avatar;
-        // $imgName = rand(11111, 99999).'.'.$image->getClientOriginalExtension();
-        if ($request->hasFile('avatar')) {
-            $image = $request->file('avatar');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(300, 300)->save(storage_path('/uploads/' . $filename));
-            $user->avatar = $filename;
-        };
+        $image = new Image;
+        if ($request->file('avatar')) {
+            $imageName = time() . '.' . $request->file('avatar')->getClientOriginalExtension();
+            $imagePath = storage_path('uploads/' . $imageName);
+            $path = $request->file('avatar')->storeAs('uploads', $imageName, 'public');
+            $image->name = $imageName;
+            $image->path = '/storage/'.$path;
+            $image->save();
+        }else{
+            $image = Image::find(18);
+        }
+
         $user->name = $request->get('name');
         $user->email = $request->get('email');
+        $user->password = Hash::make($request->get('password'));
+        $user->save();
         $role = Role::where('name', 'sub')->firstOrFail();
         $user->role()->associate($role);
-        $user->password = Hash::make($request->get('password'));
+        $user->image()->associate($image);
         $user->creators()->save($creator);
         $user->save();
+ 
         $token = JWTAuth::fromUser($user);
 
         return response()->json(compact('user', 'token'), 201);
@@ -143,7 +149,12 @@ class AuthController extends Controller
 
             return response()->json(['token_absent'], $e->getStatusCode());
         }
-
+        $user->role;
         return response()->json(['data' => $user]);
+    }
+
+    public function getUsers(){
+        $users = User::all();
+        return response()->json($users);
     }
 }
